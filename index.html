@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URBAN WEAR</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #111;
+            color: white;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #aaa;
+        }
+
+        .cart-button {
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            height: 550px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.5),
+                    rgba(0,0,0,0.5)
+                ),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+
+            display: inline-block;
+
+            background: white;
+            color: black;
+
+            padding: 15px 35px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .hero-button:hover {
+            background: #ddd;
+        }
+
+
+        /* =========================
+           CATEGORII
+        ========================= */
+
+        .categories {
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .category-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .category {
+
+            height: 230px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            cursor: pointer;
+        }
+
+        .category img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+        .category:hover img {
+            transform: scale(1.08);
+        }
+
+        .category h3 {
+
+            position: absolute;
+
+            bottom: 20px;
+            left: 0;
+            right: 0;
+
+            color: white;
+
+            font-size: 24px;
+
+            text-shadow:
+                0 2px 5px black;
+        }
+
+
+        /* =========================
+           PRODUSE
+        ========================= */
+
+        .products-section {
+
+            padding: 30px 7% 80px;
+        }
+
+        .products-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 35px;
+        }
+
+        .search {
+
+            width: 250px;
+
+            padding: 12px 15px;
+
+            border: 1px solid #ccc;
+
+            font-size: 15px;
+        }
+
+        .products {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+        .product {
+
+            background: white;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .product:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,0.12);
+        }
+
+        .product img {
+
+            width: 100%;
+
+            height: 330px;
+
+            object-fit: cover;
+        }
+
+        .product-info {
+
+            padding: 18px;
+        }
+
+        .product-info h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .price {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+        .add-cart {
+
+            width: 100%;
+
+            padding: 12px;
+
+            background: #111;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .add-cart:hover {
+            background: #333;
+        }
+
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        .newsletter {
+
+            background: #111;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .newsletter h2 {
+
+            font-size: 32px;
+
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+
+            color: #bbb;
+
+            margin-bottom: 25px;
+        }
+
+        .newsletter input {
+
+            width: 300px;
+
+            padding: 14px;
+
+            border: none;
+        }
+
+        .newsletter button {
+
+            padding: 14px 25px;
+
+            border: none;
+
+            background: white;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #050505;
+
+            color: white;
+
+            padding: 40px 7%;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+
+        /* =========================
+           COS
+        ========================= */
+
+        .cart {
+
+            position: fixed;
+
+            top: 0;
+            right: -400px;
+
+            width: 380px;
+            height: 100vh;
+
+            background: white;
+
+            z-index: 2000;
+
+            padding: 25px;
+
+            box-shadow:
+                -5px 0 20px
+                rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+        }
+
+        .cart.open {
+            right: 0;
+        }
+
+        .cart-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            margin-bottom: 30px;
+        }
+
+        .close {
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+        .cart-item {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid #ddd;
+        }
+
+        .cart-total {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-top: 25px;
+        }
+
+        .checkout {
+
+            width: 100%;
+
+            padding: 15px;
+
+            background: #111;
+
+            color: white;
+
+            border: none;
+
+            margin-top: 20px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           TELEFON
+        ========================= */
+
+        @media(max-width: 900px) {
+
+            .products {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .category-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .products {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .category-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .products-header {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 20px;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .cart {
+                width: 100%;
+            }
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            URBAN WEAR
+        </div>
+
+        <nav>
+
+            <a href="#acasa">
+                Acasă
+            </a>
+
+            <a href="#categorii">
+                Categorii
+            </a>
+
+            <a href="#produse">
+                Produse
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+        <div
+            class="cart-button"
+            onclick="openCart()">
+
+            🛒 Coș
+            (<span id="cart-count">0</span>)
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         PAGINA PRINCIPALA
+    ========================= -->
+
+    <section
+        class="hero"
+        id="acasa">
+
+        <div>
+
+            <h1>
+                URBAN WEAR
+            </h1>
+
+            <p>
+                Stilul tău. Regulile tale.
+            </p>
+
+            <a
+                href="#produse"
+                class="hero-button">
+
+                VEZI PRODUSELE
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORII
+    ========================= -->
+
+    <section
+        class="categories"
+        id="categorii">
+
+        <h2 class="section-title">
+            Categorii
+        </h2>
+
+
+        <div class="category-container">
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80">
+
+                <h3>
+                    Tricouri
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80">
+
+                <h3>
+                    Hanorace
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80">
+
+                <h3>
+                    Pantaloni
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80">
+
+                <h3>
+                    Geci
+                </h3>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUSE
+         
+         PENTRU A ADAUGA UN PRODUS:
+         COPIAZĂ UN BLOC .product
+         ȘI SCHIMBĂ:
+         1. poza
+         2. numele
+         3. descrierea
+         4. prețul
+    ========================= -->
+
+    <section
+        class="products-section"
+        id="produse">
+
+
+        <div class="products-header">
+
+            <h2 class="section-title">
+                Produsele noastre
+            </h2>
+
+            <input
+                type="text"
+                id="search"
+                class="search"
+                placeholder="Caută un produs..."
+                onkeyup="searchProducts()">
+
+        </div>
+
+
+        <div
+            class="products"
+            id="products">
+
+
+            <!-- PRODUS 1 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Tricou Basic Black
+                    </h3>
+
+                    <p class="product-description">
+                        Tricou oversized negru
+                    </p>
+
+                    <div class="price">
+                        89,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Tricou Basic Black', 89.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 2 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Hanorac Essential
+                    </h3>
+
+                    <p class="product-description">
+                        Hanorac oversized
+                    </p>
+
+                    <div class="price">
+                        179,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Hanorac Essential', 179.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 3 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Blugi Urban
+                    </h3>
+
+                    <p class="product-description">
+                        Blugi relaxed fit
+                    </p>
+
+                    <div class="price">
+                        199,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Blugi Urban', 199.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 4 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Geacă Street
+                    </h3>
+
+                    <p class="product-description">
+                        Geacă casual
+                    </p>
+
+                    <div class="price">
+                        299,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Geacă Street', 299.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 5 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Tricou White
+                    </h3>
+
+                    <p class="product-description">
+                        Tricou oversized alb
+                    </p>
+
+                    <div class="price">
+                        79,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Tricou White', 79.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 6 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Hanorac Grey
+                    </h3>
+
+                    <p class="product-description">
+                        Hanorac gri oversized
+                    </p>
+
+                    <div class="price">
+                        189,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Hanorac Grey', 189.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 7 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Pantaloni Cargo
+                    </h3>
+
+                    <p class="product-description">
+                        Pantaloni cargo negri
+                    </p>
+
+                    <div class="price">
+                        159,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Pantaloni Cargo', 159.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUS 8 -->
+
+            <div class="product">
+
+                <img
+                    src="https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=800&q=80">
+
+                <div class="product-info">
+
+                    <h3>
+                        Jachetă Denim
+                    </h3>
+
+                    <p class="product-description">
+                        Jachetă denim albastră
+                    </p>
+
+                    <div class="price">
+                        249,99 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('Jachetă Denim', 249.99)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!--
+            ======================================
+            ADAUGĂ PRODUSE NOI AICI
+            ======================================
+
+            Copiază blocul de mai jos:
+
+            <div class="product">
+
+                <img src="POZA-TA.jpg">
+
+                <div class="product-info">
+
+                    <h3>
+                        NUMELE PRODUSULUI
+                    </h3>
+
+                    <p class="product-description">
+                        DESCRIERE
+                    </p>
+
+                    <div class="price">
+                        100 lei
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart('NUMELE PRODUSULUI', 100)">
+
+                        Adaugă în coș
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            ======================================
+            -->
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NEWSLETTER
+    ========================= -->
+
+    <section class="newsletter">
+
+        <h2>
+            Rămâi la curent
+        </h2>
+
+        <p>
+            Primește noutăți și reduceri.
+        </p>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Adresa ta de email">
+
+        <button onclick="subscribe()">
+            ABONEAZĂ-TE
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer id="contact">
+
+        <div>
+
+            <strong>
+                URBAN WEAR
+            </strong>
+
+            <p>
+                Magazin de haine streetwear.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 Urban Wear
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         COSUL DE CUMPARATURI
+    ========================= -->
+
+    <div
+        class="cart"
+        id="cart">
+
+
+        <div class="cart-header">
+
+            <h2>
+                Coșul tău
+            </h2>
+
+            <span
+                class="close"
+                onclick="closeCart()">
+
+                ×
+
+            </span>
+
+        </div>
+
+
+        <div id="cart-items">
+
+            <p>
+                Coșul este gol.
+            </p>
+
+        </div>
+
+
+        <div class="cart-total">
+
+            Total:
+            <span id="cart-total">
+                0.00
+            </span>
+
+            lei
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="checkout()">
+
+            FINALIZEAZĂ COMANDA
+
+        </button>
+
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        let cart = [];
+
+
+        /* ADAUGA PRODUS IN COS */
+
+        function addToCart(name, price) {
+
+            cart.push({
+
+                name: name,
+                price: price
+
+            });
+
+            updateCart();
+
+            alert(
+                name +
+                " a fost adăugat în coș!"
+            );
+        }
+
+
+        /* ACTUALIZEAZA COSUL */
+
+        function updateCart() {
+
+            document
+                .getElementById("cart-count")
+                .innerText = cart.length;
+
+
+            let cartItems =
+                document.getElementById(
+                    "cart-items"
+                );
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<p>Coșul este gol.</p>";
+
+            } else {
+
+                cartItems.innerHTML = "";
+
+
+                cart.forEach(
+                    function(item, index) {
+
+                        cartItems.innerHTML += `
+
+                            <div class="cart-item">
+
+                                <span>
+                                    ${item.name}
+                                </span>
+
+                                <span>
+
+                                    ${item.price.toFixed(2)}
+                                    lei
+
+                                    <button
+                                        onclick="removeFromCart(${index})">
+
+                                        ❌
+
+                                    </button>
+
+                                </span>
+
+                            </div>
+
+                        `;
+                    }
+                );
+            }
+
+
+            let total = 0;
+
+
+            cart.forEach(
+                function(item) {
+
+                    total += item.price;
+
+                }
+            );
+
+
+            document
+                .getElementById("cart-total")
+                .innerText =
+                total.toFixed(2);
+
+        }
+
+
+        /* STERGE PRODUS */
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            updateCart();
+
+        }
+
+
+        /* DESCHIDE COS */
+
+        function openCart() {
+
+            document
+                .getElementById("cart")
+                .classList.add("open");
+
+        }
+
+
+        /* INCHIDE COS */
+
+        function closeCart() {
+
+            document
+                .getElementById("cart")
+                .classList.remove("open");
+
+        }
+
+
+        /* CAUTARE PRODUSE */
+
+        function searchProducts() {
+
+            let text =
+                document
+                .getElementById("search")
+                .value
+                .toLowerCase();
+
+
+            let products =
+                document.querySelectorAll(
+                    ".product"
+                );
+
+
+            products.forEach(
+                function(product) {
+
+                    let name =
+                        product
+                        .querySelector("h3")
+                        .innerText
+                        .toLowerCase();
+
+
+                    if (
+                        name.includes(text)
+                    ) {
+
+                        product.style.display =
+                            "block";
+
+                    } else {
+
+                        product.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* NEWSLETTER */
+
+        function subscribe() {
+
+            let email =
+                document
+                .getElementById("email")
+                .value;
+
+
+            if (email === "") {
+
+                alert(
+                    "Introdu adresa de email."
+                );
+
+            } else {
+
+                alert(
+                    "Te-ai abonat cu succes!"
+                );
+
+                document
+                    .getElementById("email")
+                    .value = "";
+
+            }
+
+        }
+
+
+        /* FINALIZARE COMANDA */
+
+        function checkout() {
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Coșul este gol."
+                );
+
+            } else {
+
+                alert(
+                    "Comanda ta a fost înregistrată!"
+                );
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
